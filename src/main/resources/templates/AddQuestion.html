@@ -1,0 +1,84 @@
+<html xmlns="http://www.thymeleaf.org">
+<html>
+	<head >
+		<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+	<div th:replace="companyNav::navbarcompany">
+	
+</div>
+		<center><h1>Add Question</h1></center>
+		 <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">Question Information</div>
+            <div class="card-body">
+                <form th:action="@{AddingQuestion}" th:object="${Questions}" method="post">					
+					<!-- <div class="form-group">
+                       <span th:text="${RESP}" style="color: red;" ></span>
+                    </div>-->
+                    <div class="form-group">
+                        <label for="vacancyId">Vacancy ID</label>
+                        <select class="form-control" id="vacancyId" th:field="*{vacancies.vacancyId}">
+                            <!-- Assuming vacancy IDs are available in a list called vacancyIds -->
+                            <option th:each="vac: ${vacancyList}" th:value="${vac[0]}" th:text="${vac[0]}"></option>
+                        </select>
+                    </div>
+                   
+                    
+                   <!-- <div class="form-group">
+    <label for="TestId">Test Id</label>
+    <select class="form-control" id="testId" th:field="*{test.testId}">
+        <option th:each="testId : ${TestList}" th:value="${testId}" th:text="${testId}"></option>
+    </select>
+</div>-->
+ 										
+ 					<div class="form-group">
+				<label for="vacancyId">TEST ID</label>
+				<select class="form-control" id="testId" th:field="*{test.testId}">
+					<!-- Assuming vacancy IDs are available in a list called vacancyIds -->
+					<option th:each="test: ${TestList}" th:value="${test.testId}" th:text="${test.testId}"></option>
+				</select>
+			</div>					                   
+                    <div class="form-group">
+                        <label for="Question">Questions</label>
+                        <input type="text" class="form-control" id="question" th:field="*{question}">
+                    </div>
+                    <div class="form-group">
+                        <label for="option1">option1</label>
+                        <input type="text" class="form-control" id="option1" th:field="*{option1}">
+                    </div>
+                    <div class="form-group">
+                        <label for="option2">option2</label>
+                        <input type="text" class="form-control" id="option2" th:field="*{option2}">
+                    </div>
+                    <div class="form-group">
+                        <label for="option3">option3</label>
+                        <input type="text" class="form-control" id="option3" th:field="*{option3}">
+                    </div>
+                    <div class="form-group">
+                        <label for="option4">option4</label>
+                        <input type="text" class="form-control" id="option4" th:field="*{option4}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="correct">correct</label>
+                        <input type="text" class="form-control" id="correct" th:field="*{correct}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="score">score</label>
+                        <input type="text" class="form-control" id="score" th:field="*{score}">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>                
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="footer::JobFooter">
+	
+</div>
+	</body>
+</html>

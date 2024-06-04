@@ -1,0 +1,129 @@
+<html lang="en">
+	<head th:replace="headers::includes">
+	<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+		<!-- First Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#302D5E;">
+		<div class="container">
+			<a class="navbar-brand text-light" href="#" style="font-family: 'Arial', sans-serif; font-weight: lighter;">JobNexa</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+	
+			<!-- Centered Search Bar -->
+			<div class="collapse navbar-collapse justify-content-center flex-grow-1" id="navbarNav">
+				<form class="form-inline my-1 my-lg-0">
+					<div class="input-group rounded">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input class="form-control rounded" type="search" placeholder="Search" aria-label="Search">&nbsp;&nbsp;&nbsp;
+						<div class="input-group-append">
+							<button class="btn btn-outline-light rounded-right" type="submit">
+								<i class="fas fa-search mt-1" style="height: 20px;width: 30px;border-radius: 5px;"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+	
+			<!-- Navbar Icons -->
+			<div class="navbar-icons d-flex justify-content-end flex-grow-1">
+				<a href="#"><i class="fab fa-google" style="color:white;"></i></a>
+				<a href="#"><i class="fab fa-twitter" style="color: white;margin-left: 20px;"></i></a>
+				<a href="#"><i class="fab fa-linkedin" style="color: white;margin-left: 20px;"></i></a>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- Second Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light mt-1" style="background-color: #E6E46F;">
+    <div class="container">
+        <!--<a class="navbar-brand text-light" href="#">JobNexa</a>-->
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+	        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			</button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" th:href="@{Jobseker}"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" th:href="@{getUserProfile}"><i class="fas fa-user"></i> Profile</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-file-alt"></i> Documents
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #E6E46F;">
+                        <a class="dropdown-item text-dark" th:href="@{AddDocumnent}"><i class="fas fa-plus"></i> Add</a>
+                        <a class="dropdown-item text-dark" th:href="@{viewDoc}"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" th:href="@{viewApply}"><i class="fas fa-poll"></i> History</a>
+                </li>              
+                <li class="nav-item">
+                    <a class="nav-link text-dark" th:href="@{viewTestresult}"><i class="fas fa-poll"></i> Result</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> LogOut</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+		
+		<div class="container" style="border-radius: 4px;">
+		<center>
+			
+			<br>
+			
+			<div class="table-responsive">
+		<h1 class="text text-center mt-3 mb-3 ">Document Details</h1>
+		<table class="table table-sm table-info table-striped table-hover">
+    <thead>
+        <tr class="text text-center">
+            <th scope="col">Document Id</th>
+            <th scope="col">User Id</th>
+            <th scope="col">Document Type</th>
+            <th scope="col">File</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="doc : ${documentsList}" class="text-center">
+            <td th:text="${doc.documentsId}"></td>
+            <td th:text="${doc.jobsekers.userId}"></td>
+            <td th:text="${doc.documentsType}"></td>
+            <td>
+                <a th:href="@{http://3.108.252.162:8080/uploads/{documentFile}(documentFile=${doc.documentsFile})}"
+                    class="btn btn-success" download><i class="bi bi-file-earmark-arrow-down"></i>Download</a>
+            </td>
+            <td><a th:href="@{/jobSeker/editDoc1/{documentsId}(documentsId=${doc.documentsId})}" class="btn btn-info"><i class="bi bi-pencil-square"></i> Edit</a></td>
+            <td><a th:href="@{/jobSeker/deleteDocunment/{documentsId}(documentsId=${doc.documentsId})}" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+		
+	</div>
+			
+		</center>
+		</div>
+		
+		<br><br>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<div th:replace="footer::JobFooter">
+	
+</div>
+	</body>	
+	</html>

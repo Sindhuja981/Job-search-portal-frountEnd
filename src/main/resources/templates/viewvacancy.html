@@ -1,0 +1,67 @@
+<html xmlns="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body  class="bg">
+		<div th:replace="companyNav::navbarcompany">
+	
+</div>
+		
+		<br><br>
+		<div class="container-fluid" style="border-radius: 4px;width:80%">
+		<center>
+			<div class="row">
+				<div class="col-sm-2">
+					<a th:href="@{/company/AddVacancy}" class="btn btn-outline-primary">Add Test</a>
+				</div>
+			</div>
+			<br>
+			<h2>Vacancy Details</h2>
+			<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover" style="box-shadow: black 4px 4px 8px 8px;border-radius:30px ;">
+				<thead class="thead-dark">
+						<tr>
+							
+							<th>Vacancy Id</th>
+							<!--<th>CompanyId</th>-->
+							<th>JobTitle</th>
+							<th>No of vacancies</th>
+							<th>Requirement</th>
+							<th>Postdate</th>
+							<th>Opendate</th>
+							<th>Closedate</th>
+							<th>Operations</th>
+							<th>Operations</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="vacancy : ${VacancyList}">
+						
+							
+						<td th:text="${vacancy.vacancyId}"></td>
+						
+						<!--<td th:text="${vacancy.company.companyId)}"></td> -->
+						<td th:text="${vacancy.jobTitle}"></td>
+						<td th:text="${vacancy.noOfVancancies}"></td>
+						<td th:text="${vacancy.requirements}"></td>
+						<td th:text="${vacancy.postDate}"></td>
+						<td th:text="${vacancy.openDate}"></td>
+						<td th:text="${vacancy.closeDate}"></td>
+			<td><A th:href="@{/company/getvacancy/{vacancyId} (vacancyId=${vacancy.vacancyId})}" class="btn btn-outline-success">Edit</A></td>
+				<td><A th:href="@{/company/deletevacancy/{vacancyId}(vacancyId=${vacancy.vacancyId})}" class="btn btn-outline-danger">Delete</A></td>
+	
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				 </div>
+		</center>
+		
+		<br><br><br>
+		<div th:replace="footer::JobFooter">
+	
+</div>
+	</body>
+</html>

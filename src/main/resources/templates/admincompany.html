@@ -1,0 +1,69 @@
+<html xmlns="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body  class="bg">
+		<div th:replace="adminNavbar::navbarcompany">
+	
+</div>
+		
+		<br><br>
+		<div class="container-fluid" style="border-radius: 4px;">
+		<center>
+			
+			<br>
+			<h2>Vacancy Details</h2>
+			<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover" style="box-shadow: black 4px 4px 8px 8px;border-radius:30px ;">
+				<thead class="thead-dark">
+						<tr>
+							
+							<th>company Id</th>
+							<th>comapny name</th>
+							<th>regDate</th>					
+							<th>email</th>
+							<th>mobile</th>
+							<th>location</th>
+							<th>city</th>
+							<th>state</th>
+							<th>company level</th>
+							<th>url</th>
+							<th>password</th>
+							<th>logo</th>
+							
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="vacancy : ${VacancyList}">
+						
+							
+						<td th:text="${vacancy.companyId}"></td>
+						
+						<td th:text="${vacancy.companyName}"></td>
+						
+						<td th:text="${vacancy.regDate}"></td>
+						<td th:text="${vacancy.email}"></td>
+						<td th:text="${vacancy.mobile}"></td>
+						<td th:text="${vacancy.location}"></td>
+						<td th:text="${vacancy.city}"></td>
+						<td th:text="${vacancy.state}"></td>
+						<td th:text="${vacancy.companyLevel}"></td>
+						<td ><a th:href="@{vacancy.url}" th:text="${vacancy.url}"></a></td>
+						<td th:text="${vacancy.password}"></td>
+						<td><img  th:src="@{http://3.108.252.162:8080/JobNexaProject/uploads/{logo}(logo=${vacancy.logo})}" alt="Company Logo" style="width: 80px;height: 80px;"></td>
+			
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				 </div>
+		</center>
+		
+		<br><br><br>
+		<div th:replace="footer::JobFooter">
+	
+</div>
+	</body>
+</html>

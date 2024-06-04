@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--<html lang="en">
+<head th:replace="headers::includes">
+    <meta charset="UTF-8">
+    <title>Company Profile</title>
+    <!-- Bootstrap CSS 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+   <!-- <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+<!--<h1><input th:text="${company.companyName}"></h1>-->
+ <!--<div class="container card mt-5">
+	<center><div class="card-body" style="width:100%" >
+    <form th:action="@{/getProfile}" method="get" enctype="multipart/form-data">
+       <h2 th:text="${company.companyId}"></h2><br><br>
+        <div class="row">
+			<div class="col" style="width: 30%;height: auto;">
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">Name : </span> <br>
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">Registration Date : </span><br>
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">Email : </span><br>
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">Mobile No : </span><br>
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">Location : </span><br>
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">City : </span><br>
+				<span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">State : </span><br>
+				<span style="position: absolute;margin-left: -30px; margin-top: 35px;font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">URL : </span><br>
+				<span style="position: absolute;margin-left: -30px; margin-top: 90px;font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">LOGO : </span><br>
+				<span style="position: absolute;margin-left: -30px; margin-top: 215px; font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;">Password : </span><br>
+			</div>
+        <div class="col" style="width: 70%;height: auto;text-align: center;">
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.companyName}"></span><br>
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.regDate}"></span><br>
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.email}"></span><br>
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.mobile}"></span><br>   
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.location}"></span><br>
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.city}"></span><br>
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.state}"></span><br>
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.companyLevel}"></span><br>   
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.url}"></span><br><br>
+            <img th:src="@{http://3.108.252.162:8080/JobNexaProjectuploads/{logo}(logo=${company.logo})}" style="width:15rem;height:10rem ;"></img><br>   
+            <span style="font-size: 20px;font-weight: 900; font-family: Arial, Helvetica, sans-serif;" th:text="${company.password}"></span><br>
+        </div>
+		</div>
+            <a href="#" class="btn btn-primary">edit</a>
+    </form>
+   </div></center>
+</div>
+
+</body>
+</html>-->
+
+
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+    <meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+		
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+        
+        .profile-card {
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .profile-card img {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        .profile-card h2 {
+            margin-bottom: 10px;
+        }
+        .profile-card p {
+            margin-bottom: 15px;
+        }
+        .profile-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .profile-card ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body >
+	
+
+ <center><div class="row mt-3" >
+	<div class="col-sm-3">
+	<a th:href="@{/company/Company}" class="btn btn-outline-dark">Back to home....!!<<<</a>
+	</div>
+</div></center>
+<div class="container"  >
+    <div class="profile-card text-center" style="box-shadow: black 2px 2px 4px 4px; background-color: #302D5E;color: white;">
+        <img  th:src="@{http://3.108.252.162:8080/JobNexaProject/uploads/{logo}(logo=${company.logo})}" alt="Company Logo" style="width: 40%;height: 40%;">
+        <h2 th:text="${company.companyName}"></h2>
+        <p><strong>Registration Date:</strong> <span th:text="${company.regDate}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${company.email}"></span></p>
+        <p><strong>Mobile:</strong> <span th:text="${company.mobile}"></span></p>
+        <p><strong>Location:</strong> <span th:text="${company.location}"></span>, <span  th:text="${company.city}"></span>, <span th:text="${company.state}"></span></p>
+        <p><strong>Company Level:</strong> <span th:text="${company.companyLevel}"></span></p>
+        <p><strong>Website:</strong> <a th:href="${company.url}" target="_blank" th:text="${company.url}"></a></p>
+        <button class="btn btn-dark" th:href="@{/company/getProfileToEdit/{companyId}(companyId=${company.companyId})}" onclick="document.getElementById('id01').style.display='block'" style="width:auto;background-color: #E6E46F;">edit profile</button>
+        <!--Model page to edit the profile-->
+        <div id="id01" class="modal" style="text-decoration-color: #000;" >
+  
+  <form class="modal-content animate" style="background-color: #302D5E;color: white;" th:action="@{/company/updateCompany}" method="post" th:object="${company}" enctype="multipart/form-data" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" style="color:#E6E46F;" title="Close Modal">&times;</span>
+     
+      <h3 style="color:white;">Edit your profile by u....</h3>
+      <br><br><br><br><br>
+    </div>
+
+    <div class="container" style="width: 70%;">
+						 <div class="form-group">
+                                <label for="companyId"  style="margin-right: 80%;">company Id :</label>
+                                <input type="text" class="form-control" name="companyId"  th:field="*{companyId}" required>
+                            </div>
+      
+                           
+                            <div class="form-group">
+                                <label for="companyName" style="margin-right: 80%;">companyName :</label>
+                                <input type="text" class="form-control" name="companyName" th:field="*{companyName}" required>
+                            </div>
+             
+                            
+                            <div class="form-group">
+                                <label for="email" style="margin-right: 80%;">email:</label>
+                                <input type="email" class="form-control" name="email" th:field="*{email}" readonly >
+                            </div>
+                             <div class="form-group">
+                                <label for="mobile" style="margin-right: 80%;">mobile :</label>
+                                <input type="text" class="form-control" name="mobile" th:field="*{mobile}" required>
+                            </div>
+                             <div class="form-group">
+                                <label for="location" style="margin-right: 80%;">location :</label>
+                                <input type="text" class="form-control" name="location" th:field="*{location}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city" style="margin-right: 80%;">city :</label>
+                                <input type="text" class="form-control" name="city" th:field="*{city}" required>
+                            </div>
+                             <div class="form-group">
+                                <label for="state" style="margin-right: 80%;">state :</label>
+                                <input type="text" class="form-control" name="state" th:field="*{state}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyLevel" style="margin-right: 80%;">ComapnyLeavl :</label>
+                                <input type="text" class="form-control" name="companyLevel" th:field="*{companyLevel}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="url" style="margin-right: 80%;">Comapny Url :</label>
+                                <input type="text" class="form-control" name="url" th:field="*{url}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="logo" style="margin-right: 70%;">change Company logo:</label>
+                                <input type="file" class="form-control" name="logo1">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" style="margin-right: 80%;">change password :</label>
+                                <input type="text" class="form-control" name="password" th:field="*{password}" required>
+                            </div>
+                            <center>
+								
+      <button type="submit" style="width: 40%;background-color: #E6E46F;color: #000;">update</button>
+      
+    </div>
+
+    
+  </form>
+</div>
+
+			
+    </div>
+   
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+
+
+</body>
+</html>
+

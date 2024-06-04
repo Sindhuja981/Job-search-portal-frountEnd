@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<headth:replace="headers::includes">
+	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+   
+   <div class="row mt-5">
+	<div class="col-sm-3">
+	<a th:href="@{/jobSeker/Jobseker}" class="btn btn-outline-dark">Back to home....!!<<<</a>
+	</div>
+</div>
+    
+   <form th:action="@{/jobSeker/updateDoc}" method="post" enctype="multipart/form-data" th:object="${documents}">
+<h1 class="text text-center" >Edit Documents</h1>
+		<div class="form-group">
+			<input type="text" th:field="*{jobsekers.userId}" th:value="${documents.jobsekers.userId}" readonly/>
+		<input type="text" th:field="*{documentsId}" th:value="${documents.DocumentsId}" readonly/>
+
+		</div>
+		  <div class="form-group">
+            <label for="documentsType">Document Type:</label>
+            <select class="form-control" name="documentsType" th:field="*{documentsType}" required>
+                <option value="PDF">PDF</option>
+                <option value="DOC">DOC</option>
+                <option value="PNG">PNG</option>
+                <option value="JPG">JPG</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="documentsFile">Upload Document:</label>
+            <input type="file" class="form-control-file"  name="doc1" required>
+        </div>
+		
+		<input type="submit" class="btn btn-success  mt-5 mb-5"  value="Update"/>
+		</center>
+		
+		</form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

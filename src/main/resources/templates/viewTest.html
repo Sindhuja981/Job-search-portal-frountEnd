@@ -1,0 +1,62 @@
+<html lang="en">
+	<head >
+		<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body  class="bg">
+		<div th:replace="companyNav::navbarcompany">
+	
+</div>
+		<br><br>
+		<div class="container" style="border-radius: 4px;">
+		<center>
+			<div class="row">
+				<div class="col-sm-2">
+					<a th:href="@{/company/addTest}" class="btn btn-outline-primary">Add Test</a>
+				</div>
+			</div>
+			<br>
+			<h2>Test Details</h2>
+			<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover" style="box-shadow: black 4px 4px 8px 8px;border-radius:30px ;">
+				<thead class="thead-dark">
+					<tr>
+						<th>Operation</th>
+						<th>Operation</th>
+						<th>TestId</th>
+						<th>Test Date</th>
+						<th>Test duration</th>
+						<th>Vacancy</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="test : ${TestList}">
+						<td>
+							<A th:href="@{/company/gettest/{testId}(testId=${test.testId})}" class="btn btn-outline-success">
+								Edit
+							</A> 
+						</td>
+						<td>
+							<A th:href="@{/company/deletetest/{testId}(testId=${test.testId})}" class="btn btn-outline-danger">
+								Delete
+							</A>
+						</td>
+						<td th:text="${test.testId}"></td>
+						<td th:text="${test.testDate}"></td>
+						<td th:text="${test.testDuration}"></td>
+						<td th:text="${test.vacancies.vacancyId}"></td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+			
+		</center>
+		</div>
+		
+		<br><br><br>
+		<div th:replace="footer::JobFooter">
+	
+</div>
+	</body>	
+	</html>

@@ -1,0 +1,58 @@
+<html xmlns="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body  class="bg">
+		<div th:replace="adminNavbar::navbarcompany">
+	
+</div>
+		
+		<br><br>
+		<div class="container-fluid" style="border-radius: 4px;width:80%">
+		<center>
+			
+			<br>
+			<h2>Vacancy Details</h2>
+			<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover" style="box-shadow: black 4px 4px 8px 8px;border-radius:30px ;">
+				<thead class="thead-dark">
+						<tr>
+							
+							<th>testId</th>
+							<th>vacancyId</th>
+							<th>JobTitle</th>
+							
+							<th>testDate</th>
+							<th>testDuration</th>
+							
+							
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="vacancy : ${VacancyList}">
+						
+							
+						<td th:text="${vacancy.testId}"></td>
+						
+						<td th:text="${vacancy.vacancies.vacancyId}"></td>
+						<td th:text="${vacancy.vacancies.jobTitle}"></td>
+						
+						<td th:text="${vacancy.testDate}"></td>
+						<td th:text="${vacancy.testDuration}"></td>
+						
+			
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				 </div>
+		</center>
+		
+		<br><br><br>
+		<div th:replace="footer::JobFooter">
+	
+</div>
+	</body>
+</html>

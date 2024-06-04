@@ -1,0 +1,60 @@
+<html xmlns="http://www.thymeleaf.org">
+<html>
+	<head th:replace="headers::includes">
+		<meta charset="UTF-8">
+ 			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="row mt-5">
+	<div class="col-sm-3">
+	<a th:href="@{/company/Company}" class="btn btn-outline-dark">Back to home....!!<<<</a>
+	</div>
+</div>
+
+	<center><h2>EDIT VACANCY</h2></center>
+		
+		 <div class="container">
+        <div class="card">
+            <div class="card-header">Test Information</div>
+            <div class="card-body">
+                <form th:action="@{/company/updateTest}" th:object="${Test}" method="post">					
+					<!-- <div class="form-group">
+                       <span th:text="${RESP}" style="color: red;" ></span>
+                    </div>-->
+                    
+                     <div class="form-group">
+								<label for="jobTitle">test Id</label>
+								<input type="text" class="form-control" id="testId" th:field="*{testId}">
+							</div>
+                    
+                    <div class="form-group">
+                        <label for="vacancyId">Vacancy ID</label>
+                        <select class="form-control" id="vacancyId" th:field="*{vacancies.vacancyId}">
+                            <!-- Assuming vacancy IDs are available in a list called vacancyIds -->
+                            <option th:each="vac: ${vacancyList}" th:value="${vac[0]}" th:text="${vac[0]}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title</label>
+                        <select class="form-control" id="jobTitle" >
+                            <!-- Assuming job titles are available in a list called jobTitles -->
+                            <option th:each="vac: ${vacancyList}" th:value="${vac[1]}" th:text="${vac[1]}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="testDate">Test Date</label>
+                        <input type="date" class="form-control" id="testDate" th:field="*{testDate}">
+                    </div>
+                    <div class="form-group">
+                        <label for="testDuration">Test Duration</label>
+                        <input type="text" class="form-control" id="testDuration" th:field="*{testDuration}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>                
+            </div>
+        </div>
+    </div>
+    		
+
+	</body>
+</html>
